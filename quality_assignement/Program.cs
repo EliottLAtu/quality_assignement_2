@@ -8,7 +8,7 @@ public interface IDiscountService
 
 public class ParkingService
 {
-    private readonly IDiscountService discountService; //give the service at the class ou un truc dans le genre /ELiott : XD
+    private readonly IDiscountService discountService;
 
     public ParkingService(IDiscountService discountService)
     {
@@ -36,7 +36,7 @@ public class ParkingService
         else
             fee = 0.0;
 
-        double discount = discountService.GetDiscount();// just need to use it gg bro
+        double discount = discountService.GetDiscount();
 
         if (hours >= 10)
             fee = fee * discount;
