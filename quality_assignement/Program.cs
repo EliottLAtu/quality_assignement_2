@@ -17,7 +17,7 @@ public class ParkingService
 
     public double CalculateFee(int hours, string vehicleType)
     {
-        double fee;
+        double fee = 0 ;
 
         if (vehicleType == "standard")
             if ((hours >= 1) && (hours <= 3))
@@ -33,8 +33,7 @@ public class ParkingService
                 fee = hours * 2.0;
             else
                 fee = 0.0;
-        else
-            fee = 0.0;
+        
 
         double discount = discountService.GetDiscount();
 
@@ -43,4 +42,5 @@ public class ParkingService
 
         return fee;
     }
+    
 }
