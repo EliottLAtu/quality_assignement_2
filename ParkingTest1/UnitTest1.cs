@@ -1,4 +1,6 @@
 ﻿using Moq;
+using NUnit;
+using System.Collections;
 
 namespace ParkingTest1
 {
@@ -19,7 +21,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(0, parkingService.CalculateFee(10, "hybrid"));
+            Assert.That(parkingService.CalculateFee(10, "hybrid"), Is.EqualTo(0));
 
         }
         [Test]
@@ -28,8 +30,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(8, parkingService.CalculateFee(2, "standard"));
-
+            Assert.That(parkingService.CalculateFee(2, "standard"), Is.EqualTo(8));
         }
         [Test]
         public void Teststandard2()
@@ -37,7 +38,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(15, parkingService.CalculateFee(5, "standard"));
+            Assert.That(parkingService.CalculateFee(5, "standard"), Is.EqualTo(15));
 
         }
         [Test]
@@ -46,7 +47,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(0, parkingService.CalculateFee(0, "standard"));
+            Assert.That(parkingService.CalculateFee(0, "standard"), Is.EqualTo(0));
 
         }
         [Test]
@@ -55,7 +56,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(0, parkingService.CalculateFee(0, "electric"));
+            Assert.That(parkingService.CalculateFee(0, "electric"), Is.EqualTo(0));
 
         }
         [Test]
@@ -64,7 +65,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(6, parkingService.CalculateFee(2, "electric"));
+            Assert.That(parkingService.CalculateFee(2, "electric"), Is.EqualTo(6));
 
         }
         [Test]
@@ -73,7 +74,7 @@ namespace ParkingTest1
             var mockService = new Mock<IDiscountService>();
             mockService.SetReturnsDefault(0.5);
             ParkingService parkingService = new ParkingService(mockService.Object);
-            Assert.Equals(18, parkingService.CalculateFee(9, "electric"));
+            Assert.That(parkingService.CalculateFee(9, "electric"), Is.EqualTo(18));
 
         }
     }
