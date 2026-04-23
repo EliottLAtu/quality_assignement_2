@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Numerics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // creation of the service normalement je suis dans le bon
 public interface IDiscountService
@@ -18,6 +20,8 @@ public class ParkingService
     public double CalculateFee(int hours, string vehicleType)
     {
         double fee = 0 ;
+        if (hours < 0)
+            throw new ArgumentException("Please input a valid number of hours.");
 
         if (vehicleType == "standard")
             if ((hours >= 1) && (hours <= 3))
@@ -33,7 +37,10 @@ public class ParkingService
                 fee = hours * 2.0;
             else
                 fee = 0.0;
-        
+        else
+            throw new ArgumentException("Please Input a valid vehicle type(standard / electric)");
+
+
 
         double discount = discountService.GetDiscount();
 
