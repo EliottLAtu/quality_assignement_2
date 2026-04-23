@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Game Equipment Insurance";
+}
+
+<h2>Parking Fee Calculator</h2>
+
+<form method="post" asp-controller="Insurance" asp-action="Calculate">
+    <label>Hours:</label>
+    <input type="number" name="hour" min="1" max="100" required><br><br>
+
+    <label>Select vehicle type:</label>
+    <select name="vehicle">
+        <option value="standard">standard</option>
+        <option value="electric">electric</option>
+    </select><br><br>
+
+    <button type="submit">Parking Fee Cost</button>
+</form>
+
+@if (ViewBag.Premium != null)
+{
+    <p>@ViewBag.Premium</p>
+}
